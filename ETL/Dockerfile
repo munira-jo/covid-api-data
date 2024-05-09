@@ -7,6 +7,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ARG DB_HOST
-
 CMD [ "python3", "./main.py" ]

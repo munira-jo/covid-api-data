@@ -89,15 +89,15 @@ def extract_data_from_api_and_load_to_database(date):
     Extracts the data for the given date from the API and writes it
     the tables base_stats and outcome_stats on the database
     '''
-    try:
-        response=extract_data_from_api(date)
-        print(response)
-        base_stats_row=get_base_stats_table_data_from_api_response(response)
-        write_to_base_stats_table(base_stats_row)
-        outcome_stats_row=get_outcome_stats_table_data_from_api_response(response)
-        write_to_outcome_stats_table(outcome_stats_row)
-    except KeyError:
-        pass
+
+    response=extract_data_from_api(date)
+    print(response)
+    base_stats_row=get_base_stats_table_data_from_api_response(response)
+    print(base_stats_row)
+    write_to_base_stats_table(base_stats_row)
+    outcome_stats_row=get_outcome_stats_table_data_from_api_response(response)
+    write_to_outcome_stats_table(outcome_stats_row)
+
 
 
 def backfill_data(start_date,end_date):
@@ -112,5 +112,4 @@ def backfill_data(start_date,end_date):
     for date_to_backfill in list_of_dates:
         print(f'Backfilling for {date_to_backfill}')
         extract_data_from_api_and_load_to_database(date_to_backfill)
-
 
