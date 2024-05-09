@@ -1,2 +1,2 @@
 env/*
-db_password.txt
+.env
