@@ -18,3 +18,14 @@ requests==2.31.0
 schedule==1.2.1
 six==1.16.0
 urllib3==2.2.1
+certifi==2024.2.2
+charset-normalizer==3.3.2
+flatten-dict==0.4.2
+idna==3.7
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+pytz==2024.1
+requests==2.31.0
+schedule==1.2.1
+six==1.16.0
+urllib3==2.2.1

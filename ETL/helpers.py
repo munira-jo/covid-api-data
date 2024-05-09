@@ -1,8 +1,11 @@
 from datetime import date, datetime, timedelta
+from dotenv import dotenv_values, find_dotenv
 from flatten_dict import flatten
 from psycopg2.errorcodes import UNIQUE_VIOLATION
 from psycopg2 import connect, errors        
 import requests
+
+config = dotenv_values(find_dotenv()) 
 
 
 def extract_data_from_api(date,endpoint_stub="https://api.covidtracking.com/v2/us/daily/") -> str:
@@ -23,7 +26,7 @@ def get_connection_to_database():
     '''
     Connects to the database.
     '''
-    conn = connect(database="raw", user="postgres", password="naartjie", host="db", port="5432")
+    conn = connect(database=config['POSTGRES_DB'], user="postgres", password=config['POSTGRES_PASSWORD'], host="db", port="5432")
     print('Connected to database!')
     return conn
 
