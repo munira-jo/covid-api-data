@@ -22,6 +22,6 @@ services:
       db:
         condition: service_healthy
 
-    environment:
-      - DATABASE_HOST=db:5432
-
+networks:
+  covidnet:
+    driver: bridge

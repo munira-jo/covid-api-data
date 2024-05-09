@@ -23,7 +23,7 @@ def get_connection_to_database():
     '''
     Connects to the database.
     '''
-    conn = connect(database="raw", user="postgres", password="naartjie", host="host.docker.internal", port="5432")
+    conn = connect(database="raw", user="postgres", password="naartjie", host="db", port="5432")
     print('Connected to database!')
     return conn
 
