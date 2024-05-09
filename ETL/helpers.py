@@ -23,7 +23,7 @@ def get_connection_to_database():
     '''
     Connects to the database.
     '''
-    conn = connect(database="raw", user="etl_user", password="naartjie", host="host.docker.internal", port="5432")
+    conn = connect(database="raw", user="postgres", password="naartjie", host="host.docker.internal", port="5432")
     print('Connected to database!')
     return conn
 
@@ -88,10 +88,11 @@ def extract_data_from_api_and_load_to_database(date):
     '''
     try:
         response=extract_data_from_api(date)
-        base_stats_row_test=get_base_stats_table_data_from_api_response(response)
-        write_to_base_stats_table(base_stats_row_test)
-        outcome_stats_row_test=get_outcome_stats_table_data_from_api_response(response)
-        write_to_outcome_stats_table(outcome_stats_row_test)
+        print(response)
+        base_stats_row=get_base_stats_table_data_from_api_response(response)
+        write_to_base_stats_table(base_stats_row)
+        outcome_stats_row=get_outcome_stats_table_data_from_api_response(response)
+        write_to_outcome_stats_table(outcome_stats_row)
     except KeyError:
         pass
 

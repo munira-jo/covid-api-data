@@ -2,13 +2,13 @@ services:
   db:
     image: postgres:16
     restart: always
-    shm_size: 128mb
     ports: 
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: naartjie
-      POSTGRES_USER: etl_user
-      POSTGRES_DB: raw
+      - POSTGRES_PASSWORD=naartjie
+      - POSTGRES_DB=raw
+
+
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -17,6 +17,7 @@ services:
 
   extractor:
     build: ETL
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy
