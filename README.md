@@ -7,5 +7,9 @@ everyday at 22:00 SAST, querying the API for the data of the previous day.
 
 ## How to run locally
 
-To run this project, make sure you have Docker and Docker Compose installed locally. Then simply clone the repository and
-run `docker compose up --build`.
+To run this project, make sure you have Docker and Docker Compose installed locally. 
+
+A `.env` file containing the database credentials needs to inserted in the `ETL` directory, as well as the parent directory. This file is 
+provided via email.
+
+Then simply clone the repository and run `docker compose up --build`.

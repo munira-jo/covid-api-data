@@ -71,9 +71,6 @@ def write_to_base_stats_table(base_stats_row) -> None:
             insert_sql = """INSERT INTO base_stats (date, states,total_cases,total_tested) VALUES (%s, %s, %s, %s) """
             cursor.execute(insert_sql, base_stats_row)
             db_connection.commit()
-            cursor.execute("SELECT * FROM base_stats")
-            for record in cursor:
-                print(record)
         except errors.lookup(UNIQUE_VIOLATION) as e:
             print("Date already exists in table base_stats")
             pass
@@ -115,9 +112,7 @@ def extract_data_from_api_and_load_to_database(date) -> None:
     """
 
     response = extract_data_from_api(date)
-    print(response)
     base_stats_row = get_base_stats_table_data_from_api_response(response)
-    print(base_stats_row)
     write_to_base_stats_table(base_stats_row)
     outcome_stats_row = get_outcome_stats_table_data_from_api_response(response)
     write_to_outcome_stats_table(outcome_stats_row)
